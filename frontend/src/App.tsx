@@ -32,11 +32,17 @@ function App() {
   const handleNoClick = () => setNoCount(noCount + 1);
 
   const handleYesClick = () => {
-    setYesCount(yesCount + 1);
-    // Generate random positions
-    const newTop = Math.random() * (window.innerHeight - 50); // Adjust 50 for button size
-    const newLeft = Math.random() * (window.innerWidth - 50); // Adjust 50 for button size
-    setButtonPosition({ top: newTop, left: newLeft });
+    if (noCount > 0) {
+      setYesCount(4);
+      return;
+    }
+    else {
+      setYesCount(yesCount + 1);
+      // Generate random positions
+      const newTop = Math.random() * (window.innerHeight - 50); // Adjust 50 for button size
+      const newLeft = Math.random() * (window.innerWidth - 50); // Adjust 50 for button size
+      setButtonPosition({ top: newTop, left: newLeft });
+    }
   }
 
   const getYesButtonText = () => yesPhrases[yesCount];
